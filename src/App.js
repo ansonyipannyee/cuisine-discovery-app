@@ -9,18 +9,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const apiKey = '1';
-
   useEffect(() => {
-    const headers = new Headers({
-      'Content-Type': 'application/json',
-      'API-Key': apiKey,
-    });
-
-    fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`, {
-      method: 'GET',
-      headers: headers,
-    })
+    fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`)
       .then((response) => response.json())
       .then((data) => {
         setCuisines(data.meals);
@@ -31,21 +21,15 @@ function App() {
   const onCuisineClick = (cuisine) => {
     setSelectedCuisine(cuisine);
 
-    const headers = new Headers({
-      'Content-Type': 'application/json',
-      'API-Key': apiKey,
-    });
-
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${cuisine.strArea}`, {
-      method: 'GET',
-      headers: headers,
-    })
+    fetch(
+      `https://www.themealdb.com/api/json/v1/1/filter.php?a=${cuisine.strArea}`
+    )
       .then((response) => response.json())
       .then((data) => {
         setDishes(data.meals);
         setLoading(false);
       })
-      .catch((error) => console.error('Error fetching dishes:', error));
+      .catch((error) => console.error("Error fetching dishes:", error));
   };
 
   const toggleSidebar = () => {
@@ -59,10 +43,10 @@ function App() {
           ☰
         </button>
         {isSidebarOpen && (
-          <Sidebar 
-            cuisines={cuisines} 
+          <Sidebar
+            cuisines={cuisines}
             onCuisineClick={onCuisineClick}
-            onCloseClick={toggleSidebar} 
+            onCloseClick={toggleSidebar}
           />
         )}
       </div>

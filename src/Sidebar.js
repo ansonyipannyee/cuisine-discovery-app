@@ -10,9 +10,8 @@ function Sidebar({ cuisines, onCuisineClick, onCloseClick }) {
         {cuisines.map((cuisine) => (
           <li key={cuisine.strArea}>
             <button className="cuisine-button" 
-            onClick={() => onCuisineClick(cuisine)}
-            style={{ fontFamily: 'Noto Serif JP, serif' }}>
-              {cuisine.strArea}
+            onClick={() => onCuisineClick(cuisine)}>
+            {cuisine.strArea}
             </button>
           </li>
         ))}
