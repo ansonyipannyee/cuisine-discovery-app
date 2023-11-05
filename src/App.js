@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Sidebar from "./Sidebar";
+import DishItem from "./DishItem";
 
 function App() {
   const [cuisines, setCuisines] = useState([]);
@@ -64,13 +65,7 @@ function App() {
           )}
           <ul>
             {dishes.map((dish) => (
-              <li key={dish.idMeal} className="dish">
-                <img
-                  src={`https://www.themealdb.com/images/media/meals/${dish.idMeal}.jpg/preview`}
-                  alt={dish.strMeal}
-                />
-                <p>{dish.strMeal}</p>
-              </li>
+              <DishItem key={dish.idMeal} dish={dish} />
             ))}
           </ul>
         </div>
