@@ -46,7 +46,7 @@ function App() {
         </button>
         {isSidebarOpen && (
           <Sidebar
-            cuisines={cuisines}
+            cuisines={cuisines} 
             onCuisineClick={onCuisineClick}
             onCloseClick={toggleSidebar}
           />
@@ -60,11 +60,11 @@ function App() {
       ) : (
         <div className="dishes-list">
           {selectedCuisine ? (
-            <h2>{selectedCuisine.strArea} Dishes</h2>
+            <h2 className="cuisine-title">{selectedCuisine.strArea} Dishes</h2>
           ) : (
             <h2> </h2>
           )}
-          <ul>
+          <ul className="dishes-container">
             {dishes.map((dish) => (
               <DishItem key={dish.idMeal} dish={dish} />
             ))}

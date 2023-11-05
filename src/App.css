@@ -8,17 +8,6 @@
   font-family: 'Noto Serif JP', serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -32,15 +21,6 @@
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .sidebar-button {
@@ -105,26 +85,58 @@
   text-align: right;
 }
 
-.dishes-list {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 20px;
-  margin-top: 60px;
+.cuisine-title {
+  text-align: right;
+  position: absolute;
+  top: 80px;
+  right: 30px;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
 }
 
-.dish {
-  list-style: none;
-  text-align: left;
-  width: calc(50% - 10px);
-  padding: 10px;
-  border: 1px solid #ccc;
+@media (max-width: 600px) {
+  .dishes-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dish {
+    width: 100%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .dishes-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .dish {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .dishes-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .dish {
+    width: 100%;
+  }
+}
+
+.dishes-list {
+  margin-top: 150px;
+  font-size: 15px;
+  text-align: right;
 }
 
 .dish img {
-  max-width: 100%;
+  max-width: 200px;
   height: auto;
 }
 
