@@ -30,22 +30,26 @@ function App() {
       .catch((error) => console.error('Error fetching dishes:', error));
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <div className="App">
-      <div
-        className="sidebar-container"
-        onMouseEnter={() => setIsSidebarOpen(true)}
-        onMouseLeave={() => setIsSidebarOpen(false)}
-      >
-        <button className="sidebar-button">Hover Me</button>
-        {isSidebarOpen && <Sidebar cuisines={cuisines} onCuisineClick={onCuisineClick} />}
+      <div className="sidebar-container">
+        <button className="sidebar-button" onClick={toggleSidebar}>
+          ☰
+        </button>
+        {isSidebarOpen && (
+          <Sidebar cuisines={cuisines} onCuisineClick={onCuisineClick} />
+        )}
       </div>
       {loading ? (
         <p>Loading dishes...</p>
       ) : (
         <div className="dishes-list">
           {selectedCuisine ? (
-            <h2>Dishes from {selectedCuisine.strArea}</h2>
+            <h2>{selectedCuisine.strArea} Dishes</h2>
           ) : (
             <h2>Select a Cuisine</h2>
           )}
@@ -59,6 +63,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

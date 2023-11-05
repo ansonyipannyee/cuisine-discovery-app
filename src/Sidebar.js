@@ -6,9 +6,9 @@ function Sidebar({ cuisines, onCuisineClick }) {
             <h2>Cuisines</h2>
             <ul>
                 {cuisines.map((cuisine) => (
-                    <li key={cuisine.strCategory}>
+                    <li key={cuisine.strArea}>
                         <button onClick={() => onCuisineClick(cuisine)}>
-                            {cuisine.strCategory}
+                            {cuisine.strArea}
                         </button>
                     </li>
                 ))}
