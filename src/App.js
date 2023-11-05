@@ -41,7 +41,11 @@ function App() {
           ☰
         </button>
         {isSidebarOpen && (
-          <Sidebar cuisines={cuisines} onCuisineClick={onCuisineClick} />
+          <Sidebar 
+          cuisines={cuisines} 
+          onCuisineClick={onCuisineClick}
+          onCloseClick={toggleSidebar} 
+          />
         )}
       </div>
       {loading ? (

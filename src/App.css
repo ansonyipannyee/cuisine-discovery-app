@@ -70,7 +70,8 @@
 }
 
 .sidebar {
-  width: 100px;
+  position: relative;
+  width: 120px;
   border: 1px solid #ccc;
   border-radius: 12px;
   padding: 10px;
@@ -93,4 +94,37 @@
 .dishes-list {
   flex: 1;
   text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #282c34;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #D3885E;
+}
+
+.cuisine-button {
+  background-color: transparent;
+  color: #282c34;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.cuisine-button:hover {
+  background-color: #282c34;
+  color: #D3885E;
 }
