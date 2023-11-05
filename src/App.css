@@ -8,17 +8,6 @@
   font-family: 'Noto Serif JP', serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -95,38 +84,12 @@
   font-weight: 500;
 }
 
-@media (max-width: 600px) {
-  .dishes-list {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .dish {
-    width: 100%;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 1024px) {
-  .dishes-list {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .dish {
-    width: 50%;
-  }
-}
-
-@media (min-width: 1025px) {
-  .dishes-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .dish {
-    width: 100%;
-  }
+.dishes-container {
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .dishes-list {
@@ -172,3 +135,4 @@
   background-color: #282c34;
   color: #D3885E;
 }
+
