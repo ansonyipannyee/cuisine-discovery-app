@@ -31,25 +31,22 @@ function App() {
   return (
     <div className="App">
       <h1>Cuisine Discovery</h1>
+      <nav className="navbar">
+        {cuisines.map((cuisine) => (
+          <button
+            key={cuisine.strArea}
+            onClick={() => setSelectedCuisine(cuisine)}
+            className={selectedCuisine === cuisine ? "active" : ""}
+          >
+            {cuisine.strArea}
+          </button>
+        ))}
+      </nav>
       {loading ? (
         <p>Loading cuisines...</p>
       ) : (
-        <div className="cuisine-list">
-          <h2>Cuisines</h2>
-          <ul>
-            {cuisines.map((cuisine) => (
-              <li key={cuisine.strArea}>
-                <button onClick={() => setSelectedCuisine(cuisine)}>
-                  {cuisine.strArea}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {selectedCuisine && (
         <div className="dishes-list">
-          <h2>Dishes from {selectedCuisine.strArea}</h2>
+          <h2>Dishes from {selectedCuisine ? selectedCuisine.strArea : "Selected Cuisine"}</h2>
           <ul>
             {dishes.map((dish) => (
               <li key={dish.idMeal}>{dish.strMeal}</li>
