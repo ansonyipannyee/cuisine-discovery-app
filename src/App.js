@@ -55,7 +55,7 @@ function App() {
           {selectedCuisine ? (
             <h2>{selectedCuisine.strArea} Dishes</h2>
           ) : (
-            <h2>Select a Cuisine</h2>
+            <h2>foods of the world</h2>
           )}
           <ul>
             {dishes.map((dish) => (
