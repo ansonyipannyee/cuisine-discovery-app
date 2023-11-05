@@ -20,9 +20,8 @@ function App() {
 
   const onCuisineClick = (cuisine) => {
     setSelectedCuisine(cuisine);
-    setIsSidebarOpen(false);
 
-  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${cuisine.strArea}`)
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${cuisine.strArea}`)
       .then((response) => response.json())
       .then((data) => {
         setDishes(data.meals);
@@ -33,18 +32,14 @@ function App() {
 
   return (
     <div className="App">
-      <button
-        className="sidebar-button"
+      <div
+        className="sidebar-container"
         onMouseEnter={() => setIsSidebarOpen(true)}
-        onMouseLeave={(e) => {
-          if (!e.relatedTarget || !e.relatedTarget.closest(".sidebar")) {
-            setIsSidebarOpen(false);
-          }
-        }} 
+        onMouseLeave={() => setIsSidebarOpen(false)}
       >
-        Hover Me
-      </button>
-      {isSidebarOpen && <Sidebar cuisines={cuisines} onCuisineClick={onCuisineClick} />}
+        <button className="sidebar-button">Hover Me</button>
+        {isSidebarOpen && <Sidebar cuisines={cuisines} onCuisineClick={onCuisineClick} />}
+      </div>
       {loading ? (
         <p>Loading dishes...</p>
       ) : (
@@ -64,5 +59,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
