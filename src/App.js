@@ -46,30 +46,6 @@ function App() {
       {isSidebarOpen && (
         <Sidebar cuisines={cuisines} selectCuisine={selectCuisine} />
       )}
-      <h1>Cuisine Discovery</h1>
-      <nav className="navbar">
-        {cuisines.map((cuisine) => (
-          <button
-            key={cuisine.strArea}
-            onClick={() => selectCuisine(cuisine)}
-            className={selectedCuisine === cuisine ? "active" : ""}
-          >
-            {cuisine.strArea}
-          </button>
-        ))}
-      </nav>
-      {loading ? (
-        <p>Loading cuisines...</p>
-      ) : (
-        <div className="dishes-list">
-          <h2>Dishes from {selectedCuisine ? selectedCuisine.strArea : "Selected Cuisine"}</h2>
-          <ul>
-            {dishes.map((dish) => (
-              <li key={dish.idMeal}>{dish.strMeal}</li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 }
