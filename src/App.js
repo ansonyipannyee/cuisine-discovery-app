@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Sidebar from "./Sidebar";
 
 function App() {
   const [cuisines, setCuisines] = useState([]);
