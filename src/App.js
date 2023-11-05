@@ -6,7 +6,7 @@ function App() {
   const [cuisines, setCuisines] = useState([]);
   const [selectedCuisine, setSelectedCuisine] = useState(null);
   const [dishes, setDishes] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
@@ -14,37 +14,52 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setCuisines(data.meals);
-        setLoading(false);
       })
       .catch((error) => console.error("Error fetching cuisines:", error));
   }, []);
 
-  useEffect(() => {
-    if (selectedCuisine) {
-      fetch(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?a=${selectedCuisine.strArea}`
-      )
-        .then((response) => response.json())
-        .then((data) => setDishes(data.meals))
-        .catch((error) => console.error("Error fetching dishes:", error));
-    }
-  }, [selectedCuisine]);
-
-  const selectCuisine = (cuisine) => {
+  const onCuisineClick = (cuisine) => {
     setSelectedCuisine(cuisine);
     setIsSidebarOpen(false);
+
+  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${cuisine.strArea}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setDishes(data.meals);
+        setLoading(false);
+      })
+      .catch((error) => console.error('Error fetching dishes:', error));
   };
 
   return (
     <div className="App">
       <button
-        className="sidebar-icon"
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        className="sidebar-button"
+        onMouseEnter={() => setIsSidebarOpen(true)}
+        onMouseLeave={(e) => {
+          if (!e.relatedTarget || !e.relatedTarget.closest(".sidebar")) {
+            setIsSidebarOpen(false);
+          }
+        }} 
       >
-        ☰
+        Hover Me
       </button>
-      {isSidebarOpen && (
-        <Sidebar cuisines={cuisines} selectCuisine={selectCuisine} />
+      {isSidebarOpen && <Sidebar cuisines={cuisines} onCuisineClick={onCuisineClick} />}
+      {loading ? (
+        <p>Loading dishes...</p>
+      ) : (
+        <div className="dishes-list">
+          {selectedCuisine ? (
+            <h2>Dishes from {selectedCuisine.strArea}</h2>
+          ) : (
+            <h2>Select a Cuisine</h2>
+          )}
+          <ul>
+            {dishes.map((dish) => (
+              <li key={dish.idMeal}>{dish.strMeal}</li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

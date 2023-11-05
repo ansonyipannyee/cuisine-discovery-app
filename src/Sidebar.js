@@ -1,13 +1,12 @@
 import React from "react";
-import "./Sidebar.css";
 
-function Sidebar({ cuisines, selectCuisine }) {
+const Sidebar = ({ cuisines, onCuisineClick }) => {
     return (
         <div className="sidebar">
             <ul>
                 {cuisines.map((cuisine) => (
-                    <li key={cuisine.strArea} onClick={() => selectCuisine(cuisine)}>
-                        {cuisine.strArea}
+                    <li key={cuisine.strArea}>
+                        <button onClick={() => onCuisineClick(cuisine)}> {cuisine.strArea}</button>
                     </li>
                 ))}
             </ul>
