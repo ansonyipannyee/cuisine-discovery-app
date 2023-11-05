@@ -1,11 +1,11 @@
 import React from "react";
 
-const DishItem = ({ dish, onRecipeClick }) => {
+const DishItem = ({ dish }) => {
   return (
     <div className="dish">
       <img src={dish.strMealThumb} alt={dish.strMeal} />
       <p>{dish.strMeal}</p>
-      {dish.strInstructions && (
+      {/* {dish.strInstructions && (
         <div className="recipe">
           <h2>Recipe</h2>
           <p>{dish.strInstructions}</p>
@@ -22,8 +22,7 @@ const DishItem = ({ dish, onRecipeClick }) => {
             </div>
           )}
         </div>
-      )}
-      <button onClick={onRecipeClick}>View Recipe</button>
+      )} */}
     </div>
   );
 };

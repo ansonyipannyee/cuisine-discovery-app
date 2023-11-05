@@ -21,6 +21,7 @@ function App() {
 
   const onCuisineClick = (cuisine) => {
     setSelectedCuisine(cuisine);
+    setIsSidebarOpen(false);
 
     fetch(
       `https://www.themealdb.com/api/json/v1/1/filter.php?a=${cuisine.strArea}`
