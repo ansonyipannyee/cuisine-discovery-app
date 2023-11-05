@@ -9,8 +9,18 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const apiKey = '1';
+
   useEffect(() => {
-    fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'API-Key': apiKey,
+    });
+
+    fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`, {
+      method: 'GET',
+      headers: headers,
+    })
       .then((response) => response.json())
       .then((data) => {
         setCuisines(data.meals);
@@ -21,7 +31,15 @@ function App() {
   const onCuisineClick = (cuisine) => {
     setSelectedCuisine(cuisine);
 
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${cuisine.strArea}`)
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'API-Key': apiKey,
+    });
+
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${cuisine.strArea}`, {
+      method: 'GET',
+      headers: headers,
+    })
       .then((response) => response.json())
       .then((data) => {
         setDishes(data.meals);
@@ -42,11 +60,14 @@ function App() {
         </button>
         {isSidebarOpen && (
           <Sidebar 
-          cuisines={cuisines} 
-          onCuisineClick={onCuisineClick}
-          onCloseClick={toggleSidebar} 
+            cuisines={cuisines} 
+            onCuisineClick={onCuisineClick}
+            onCloseClick={toggleSidebar} 
           />
         )}
+      </div>
+      <div className="main-header">
+        <h2>foods of the world</h2>
       </div>
       {loading ? (
         <p>Loading dishes...</p>
@@ -55,11 +76,17 @@ function App() {
           {selectedCuisine ? (
             <h2>{selectedCuisine.strArea} Dishes</h2>
           ) : (
-            <h2>foods of the world</h2>
+            <h2> </h2>
           )}
           <ul>
             {dishes.map((dish) => (
-              <li key={dish.idMeal}>{dish.strMeal}</li>
+              <li key={dish.idMeal} className="dish">
+                <img
+                  src={`https://www.themealdb.com/images/media/meals/${dish.idMeal}.jpg/preview`}
+                  alt={dish.strMeal}
+                />
+                <p>{dish.strMeal}</p>
+              </li>
             ))}
           </ul>
         </div>

@@ -90,15 +90,42 @@
   margin-bottom: 10px;
 }
 
-.dishes-list {
-  flex: 1;
-  text-align: right;
+.main-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  z-index: 1;
 }
 
-.dishes-list h2 {
+.main-header h2 {
   margin: 0;
   padding: 30px;
   font-weight: 500;
+  text-align: right;
+}
+
+.dishes-list {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 60px;
+}
+
+.dish {
+  list-style: none;
+  text-align: left;
+  width: calc(50% - 10px);
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.dish img {
+  max-width: 100%;
+  height: auto;
 }
 
 .close-button {
