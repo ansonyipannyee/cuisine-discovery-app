@@ -1,5 +1,8 @@
 .App {
-  
+  display: flex;
+  justify-content: flex-start;
+  min-height: 100vh;
+  font-size: calc(10px + 2vmin);
 }
 
 .App-logo {
@@ -38,7 +41,23 @@
 }
 
 .sidebar-button {
-  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 30px;
+}
+
+.sidebar-button {
+  background-color: #282c34;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -47,24 +66,31 @@
 }
 
 .sidebar-button:hover {
-  background-color: #005293;
+  background-color: #D3885E;
 }
 
 .sidebar {
-  position: absolute;
-  background-color: #f5f5f5;
-  width: 200px;
+  width: 100px;
   border: 1px solid #ccc;
+  border-radius: 12px;
   padding: 10px;
-  display: none;
+}
+
+.sidebar h2 {
+  margin: 0;
+}
+
+.sidebar ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
   margin-bottom: 10px;
 }
 
-.sidebar-button:hover + .sidebar,
-.sidebar:hover {
-  display: block;
+.dishes-list {
+  flex: 1;
+  text-align: center;
 }
