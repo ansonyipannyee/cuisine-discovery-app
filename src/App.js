@@ -7,6 +7,7 @@ function App() {
   const [selectedCuisine, setSelectedCuisine] = useState(null);
   const [dishes, setDishes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
@@ -29,14 +30,28 @@ function App() {
     }
   }, [selectedCuisine]);
 
+  const selectCuisine = (cuisine) => {
+    setSelectedCuisine(cuisine);
+    setIsSidebarOpen(false);
+  };
+
   return (
     <div className="App">
+      <button
+        className="sidebar-icon"
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      >
+        ☰
+      </button>
+      {isSidebarOpen && (
+        <Sidebar cuisines={cuisines} selectCuisine={selectCuisine} />
+      )}
       <h1>Cuisine Discovery</h1>
       <nav className="navbar">
         {cuisines.map((cuisine) => (
           <button
             key={cuisine.strArea}
-            onClick={() => setSelectedCuisine(cuisine)}
+            onClick={() => selectCuisine(cuisine)}
             className={selectedCuisine === cuisine ? "active" : ""}
           >
             {cuisine.strArea}
