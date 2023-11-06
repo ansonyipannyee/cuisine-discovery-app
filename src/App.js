@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Sidebar from "./Sidebar";
 import DishItem from "./DishItem";
-import SearchBar from "./Searchbar";
+import globe from "./globe.mp4";
+// import SearchBar from "./Searchbar";
 
 function App() {
   const [cuisines, setCuisines] = useState([]);
@@ -39,24 +40,16 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const handleSearch = (query) => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setDishes(data.meals);
-        setLoading(false);
-      })
-      .catch((error) => console.error("Error fetching dishes:", error));
-  };
-
   return (
     <div className="App">
+      <div className="background-video">
+        <video src={globe} autoPlay loop muted />
+      </div>
       <div className="header-container">
         <div className="sidebar-container">
           <button className="sidebar-button" onClick={toggleSidebar}>
             ☰
           </button>
-          <SearchBar onSearch={handleSearch} />
         </div>
         {isSidebarOpen && (
           <Sidebar
