@@ -98,8 +98,35 @@
   text-align: right;
 }
 
+.dish {
+  width: 100%;
+  max-width: 250px;
+  margin: 10px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* .dish-info {
+  display: none; 
+  padding: 10px;
+  text-align: left;
+}
+
+.dish-info h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.dish-info.show {
+  display: block;
+}  */
+
 .dish img {
-  max-width: 200px;
+  max-width: 100%;
   height: auto;
 }
 

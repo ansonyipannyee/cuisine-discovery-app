@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Sidebar from "./Sidebar";
 import DishItem from "./DishItem";
+import SearchBar from "./Searchbar";
 
 function App() {
   const [cuisines, setCuisines] = useState([]);
@@ -38,6 +39,16 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const handleSearch = (query) => {
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setDishes(data.meals);
+        setLoading(false);
+      })
+      .catch((error) => console.error("Error fetching dishes:", error));
+  };
+
   return (
     <div className="App">
       <div className="sidebar-container">
@@ -51,6 +62,7 @@ function App() {
             onCloseClick={toggleSidebar}
           />
         )}
+        <SearchBar onSearch={handleSearch} />
       </div>
       <div className="main-header">
         <h2>foods of the world</h2>
@@ -62,7 +74,7 @@ function App() {
           {selectedCuisine ? (
             <h2 className="cuisine-title">{selectedCuisine.strArea} Dishes</h2>
           ) : (
-            <h2> </h2>
+            <p> </p>
           )}
           <ul className="dishes-container">
             {dishes.map((dish) => (
