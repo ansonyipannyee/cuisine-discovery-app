@@ -115,10 +115,9 @@ video {
 
 .input-field,
 .search-button {
-
   font-style: italic;
   border: 0.5px solid #483C32;
-  border-radius: 10px;
+  border-radius: 5px;
   margin-right: 2px;
 }
 

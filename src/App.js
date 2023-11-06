@@ -11,6 +11,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [randomRecipe, setRandomRecipe] = useState(null);
 
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`)
@@ -46,6 +47,7 @@ function App() {
     setDishes([]);
     setSelectedCuisine(null);
     setSearchQuery("");
+    setRandomRecipe(null); // Clear the random recipe
   };
 
   const handleSearch = () => {
@@ -60,6 +62,19 @@ function App() {
         setLoading(false);
       })
       .catch((error) => console.error("Error fetching dishes:", error));
+  };
+
+  const handleRandomRecipe = () => {
+    setLoading(true);
+    setSelectedCuisine(null);
+
+    fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
+      .then((response) => response.json())
+      .then((data) => {
+        setRandomRecipe(data.meals[0]);
+        setLoading(false);
+      })
+      .catch((error) => console.error("Error fetching random recipe:", error));
   };
 
   return (
@@ -87,7 +102,6 @@ function App() {
         </div>
         <div className="title-and-search">
           <h2 className="main-header">foods of the world.</h2>
-
           <div className="search-bar">
             <input
               className="input-field"
@@ -95,22 +109,28 @@ function App() {
               placeholder="Search recipe"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSearch();
+                }
+              }}
             />
             <button onClick={handleSearch} className="search-button">
               ⌕
             </button>
           </div>
         </div>
+        <button onClick={handleRandomRecipe} className="random-recipe-button">
+          Get a Random Recipe
+        </button>
       </div>
       {loading ? (
-        <p></p>
+        <p>...</p>
       ) : (
         <div className="dishes-list">
           {selectedCuisine ? (
             <h2 className="cuisine-title">{selectedCuisine.strArea} Dishes</h2>
-          ) : (
-            <p> </p>
-          )}
+          ) : null}
           <ul className="dishes-container">
             {dishes.map((dish) => (
               <DishItem key={dish.idMeal} dish={dish} />
@@ -118,6 +138,11 @@ function App() {
           </ul>
         </div>
       )}
+      {randomRecipe ? (
+        <div className="random-recipe">
+          <DishItem key={randomRecipe.idMeal} dish={randomRecipe} />
+        </div>
+      ) : null}
     </div>
   );
 }
