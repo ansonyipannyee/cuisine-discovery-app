@@ -45,22 +45,22 @@ video {
 }
 
 .sidebar-button {
-  background-color: #282c34;
+  background-color: #72542D;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 13px 22px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .sidebar-button:hover {
-  background-color: #D3885E;
+  background-color: #D2B48C;
 }
 
 .sidebar {
   position: relative;
   width: 120px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 12px;
   padding: 10px;
 }
@@ -101,7 +101,7 @@ video {
 }
 
 .dishes-container {
-  padding: 30px;
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -119,8 +119,8 @@ video {
   max-width: 250px;
   margin: 10px;
   background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   overflow: hidden;
   text-align: center;
   cursor: pointer;
@@ -138,17 +138,18 @@ video {
   background: none;
   border: none;
   font-size: 20px;
-  color: #282c34;
+  color: #72542D;
   cursor: pointer;
 }
 
 .close-button:hover {
-  color: #D3885E;
+  color: #F5F5F5;
 }
 
 .cuisine-button {
-  background-color: transparent;
-  color: #282c34;
+  font-weight: bold;
+  background-color: #D2B48C;
+  color: #72542D;
   border: none;
   border-radius: 12px;
   padding: 10px 20px;
@@ -160,7 +161,7 @@ video {
 }
 
 .cuisine-button:hover {
-  background-color: #282c34;
-  color: #D3885E;
+  background-color: #72542D;
+  color: #F5F5F5;
 }
 

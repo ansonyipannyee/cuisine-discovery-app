@@ -42,26 +42,29 @@ function App() {
 
   return (
     <div className="App">
-      <div className="background-video">
-        <video src={globe} autoPlay loop muted />
-      </div>
-      <div className="header-container">
-        <div className="sidebar-container">
-          <button className="sidebar-button" onClick={toggleSidebar}>
-            ☰
-          </button>
+      <div className="homepage">
+        <div className="background-video">
+          <video src={globe} autoPlay loop muted />
         </div>
-        {isSidebarOpen && (
-          <Sidebar
-            cuisines={cuisines}
-            onCuisineClick={onCuisineClick}
-            onCloseClick={toggleSidebar}
-          />
-        )}
+        <div className="header-container">
+          <div className="sidebar-container">
+            <button className="sidebar-button" onClick={toggleSidebar}>
+              ☰
+            </button>
+          </div>
+          {isSidebarOpen && (
+            <Sidebar
+              cuisines={cuisines}
+              onCuisineClick={onCuisineClick}
+              onCloseClick={toggleSidebar}
+            />
+          )}
+        </div>
+        <div className="main-header">
+          <h2>foods of the world.</h2>
+        </div>
       </div>
-      <div className="main-header">
-        <h2>foods of the world.</h2>
-      </div>
+
       {loading ? (
         <p>Loading dishes...</p>
       ) : (
