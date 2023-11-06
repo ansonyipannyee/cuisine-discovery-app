@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Sidebar from "./Sidebar";
-import Home from "./Home";
+import DishItem from "./DishItem";
+import globe from "./globe.mp4";
 
 function App() {
   const [cuisines, setCuisines] = useState([]);
@@ -40,15 +41,45 @@ function App() {
 
   return (
     <div className="App">
-      <Home
-        cuisines={cuisines}
-        selectedCuisine={selectedCuisine}
-        dishes={dishes}
-        loading={loading}
-        isSidebarOpen={isSidebarOpen}
-        onCuisineClick={onCuisineClick}
-        toggleSidebar={toggleSidebar}
-      />
+      <div className="homepage">
+        <div className="background-video">
+          <video src={globe} autoPlay loop muted />
+        </div>
+        <div className="header-container">
+          <div className="sidebar-container">
+            <button className="sidebar-button" onClick={toggleSidebar}>
+              ☰
+            </button>
+          </div>
+          {isSidebarOpen && (
+            <Sidebar
+              cuisines={cuisines}
+              onCuisineClick={onCuisineClick}
+              onCloseClick={toggleSidebar}
+            />
+          )}
+        </div>
+        <div className="main-header">
+          <h2>foods of the world.</h2>
+        </div>
+      </div>
+
+      {loading ? (
+        <p>Loading dishes...</p>
+      ) : (
+        <div className="dishes-list">
+          {selectedCuisine ? (
+            <h2 className="cuisine-title">{selectedCuisine.strArea} Dishes</h2>
+          ) : (
+            <p> </p>
+          )}
+          <ul className="dishes-container">
+            {dishes.map((dish) => (
+              <DishItem key={dish.idMeal} dish={dish} />
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
