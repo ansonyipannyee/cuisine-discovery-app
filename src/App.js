@@ -39,6 +39,13 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const handleHomepageClick = () => {
+    setLoading(false);
+    setIsSidebarOpen(false);
+    setDishes([]);
+    setSelectedCuisine(null);
+  };
+
   return (
     <div className="App">
       <div className="homepage">
@@ -50,6 +57,7 @@ function App() {
             <button className="sidebar-button" onClick={toggleSidebar}>
               ☰
             </button>
+            <button onClick={handleHomepageClick}>Homepage</button>
           </div>
           {isSidebarOpen && (
             <Sidebar
