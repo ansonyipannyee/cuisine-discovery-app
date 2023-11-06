@@ -10,6 +10,7 @@ function App() {
   const [dishes, setDishes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`)
@@ -44,6 +45,21 @@ function App() {
     setIsSidebarOpen(false);
     setDishes([]);
     setSelectedCuisine(null);
+    setSearchQuery("");
+  };
+
+  const handleSearch = () => {
+    setLoading(true);
+    setIsSidebarOpen(false);
+
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setDishes(data.meals);
+        setSelectedCuisine(null);
+        setLoading(false);
+      })
+      .catch((error) => console.error("Error fetching dishes:", error));
   };
 
   return (
@@ -57,7 +73,6 @@ function App() {
             <button className="sidebar-button" onClick={toggleSidebar}>
               ☰
             </button>
-            <button onClick={handleHomepageClick}>Homepage</button>
           </div>
           {isSidebarOpen && (
             <Sidebar
@@ -66,14 +81,29 @@ function App() {
               onCloseClick={toggleSidebar}
             />
           )}
+          <button onClick={handleHomepageClick} className="homepage-button">
+            ⌂
+          </button>
         </div>
-        <div className="main-header">
-          <h2>foods of the world.</h2>
+        <div className="title-and-search">
+          <h2 className="main-header">foods of the world.</h2>
+
+          <div className="search-bar">
+            <input
+              className="input-field"
+              type="text"
+              placeholder="Search recipe"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button onClick={handleSearch} className="search-button">
+              ⌕
+            </button>
+          </div>
         </div>
       </div>
-
       {loading ? (
-        <p>Loading dishes...</p>
+        <p></p>
       ) : (
         <div className="dishes-list">
           {selectedCuisine ? (
