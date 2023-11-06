@@ -12,16 +12,16 @@ function SearchBar({ onSearch }) {
     <div className="search-bar">
       <input
         type="text"
-        placeholder="Search for a meal..."
+        placeholder="Search for the recipe"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        onKeyPress={(e) => {
+        onKeyDown={(e) => {
           if (e.key === "Enter") {
             handleSearch();
           }
         }}
       />
-      <button onClick={handleSearch}>Search</button>
+      {/* <button onClick={handleSearch}>🔍</button> */}
     </div>
   );
 }

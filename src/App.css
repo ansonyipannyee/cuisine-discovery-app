@@ -21,10 +21,17 @@
   transition: background-color 0.3s;
 }
 
-.sidebar-container {
+.header-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: flex-start;
+}
+
+.sidebar-container {
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-start; */
   padding: 30px;
 }
 
@@ -78,7 +85,7 @@
   text-align: right;
   position: absolute;
   top: 80px;
-  right: 30px;
+  right: 40px;
   margin: 0;
   padding: 0;
   font-weight: 500;
@@ -109,21 +116,6 @@
   text-align: center;
   cursor: pointer;
 }
-
-/* .dish-info {
-  display: none; 
-  padding: 10px;
-  text-align: left;
-}
-
-.dish-info h3 {
-  margin: 0 0 10px;
-  font-size: 20px;
-}
-
-.dish-info.show {
-  display: block;
-}  */
 
 .dish img {
   max-width: 100%;

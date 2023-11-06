@@ -51,21 +51,23 @@ function App() {
 
   return (
     <div className="App">
-      <div className="sidebar-container">
-        <button className="sidebar-button" onClick={toggleSidebar}>
-          ☰
-        </button>
+      <div className="header-container">
+        <div className="sidebar-container">
+          <button className="sidebar-button" onClick={toggleSidebar}>
+            ☰
+          </button>
+          <SearchBar onSearch={handleSearch} />
+        </div>
         {isSidebarOpen && (
           <Sidebar
-            cuisines={cuisines} 
+            cuisines={cuisines}
             onCuisineClick={onCuisineClick}
             onCloseClick={toggleSidebar}
           />
         )}
-        <SearchBar onSearch={handleSearch} />
       </div>
       <div className="main-header">
-        <h2>foods of the world</h2>
+        <h2>foods of the world.</h2>
       </div>
       {loading ? (
         <p>Loading dishes...</p>
