@@ -45,7 +45,7 @@ video {
 }
 
 .sidebar-button {
-  background-color: #72542D;
+  background-color: #483C32;
   color: white;
   border: none;
   padding: 13px 22px;
@@ -79,7 +79,7 @@ video {
   position: absolute;
   left: 80px;
   top: 17px;
-  color: #72542D;
+  color: #483c32;
   background-color: transparent;
   border: none;
   padding: 10px 20px;
@@ -89,7 +89,7 @@ video {
 }
 
 .homepage-button:hover {
-  color: darkorange;
+  color: #9A463D;
 }
 
 .title-and-search {
@@ -111,6 +111,15 @@ video {
 .search-bar {
   margin-right: 35px;
   text-align: right;
+}
+
+.input-field,
+.search-button {
+
+  font-style: italic;
+  border: 0.5px solid #483C32;
+  border-radius: 10px;
+  margin-right: 2px;
 }
 
 .cuisine-title {
@@ -161,18 +170,17 @@ video {
   background: none;
   border: none;
   font-size: 20px;
-  color: #72542D;
+  color: #483c32;
   cursor: pointer;
 }
 
 .close-button:hover {
-  color: #F5F5F5;
+  color: #9a463d;
 }
 
 .cuisine-button {
-  font-weight: bold;
-  background-color: #D2B48C;
-  color: #72542D;
+  background-color: #483c32;
+  color: #f5f5f5;
   border: none;
   border-radius: 12px;
   padding: 10px 20px;
@@ -184,7 +192,7 @@ video {
 }
 
 .cuisine-button:hover {
-  background-color: #72542D;
-  color: #F5F5F5;
+  background-color: #d2b48c;
+  color: #483c32;
 }
 
