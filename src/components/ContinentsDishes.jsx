@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./ContinentsDishes.css";
+import "./styles/ContinentsDishes.css";
 
 function ContinentsDishes() {
   const [data, setData] = useState(null);
